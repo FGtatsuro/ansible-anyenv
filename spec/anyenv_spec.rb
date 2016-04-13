@@ -1,17 +1,37 @@
 require "spec_helper_#{ENV['SPEC_TARGET_BACKEND']}"
 
-describe package('python-dev'), :if => ['debian', 'alpine'].include?(os[:family]) do
-  it { should be_installed }
+describe command('which renv') do
+  its(:exit_status) { should eq 0 }
 end
 
-describe package('build-essential'), :if => os[:family] == 'debian' do
-  it { should be_installed }
+describe command('which plenv') do
+  its(:exit_status) { should eq 0 }
 end
 
-describe package('build-base'), :if => os[:family] == 'alpine' do
-  it { should be_installed }
+describe command('which pyenv') do
+  its(:exit_status) { should eq 0 }
 end
 
-describe command('which python') do
+describe command('which phpenv') do
+  its(:exit_status) { should eq 0 }
+end
+
+describe command('which ndenv') do
+  its(:exit_status) { should eq 0 }
+end
+
+describe command('which denv') do
+  its(:exit_status) { should eq 0 }
+end
+
+describe command('which jenv') do
+  its(:exit_status) { should eq 0 }
+end
+
+describe command('which luaenv') do
+  its(:exit_status) { should eq 0 }
+end
+
+describe command('which goenv') do
   its(:exit_status) { should eq 0 }
 end
