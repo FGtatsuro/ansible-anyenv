@@ -54,6 +54,18 @@ Local requirements are as follows.
 - Ansible (>= 2.0.0)
 - Docker (>= 1.10.1)
 
+Notes
+-----
+
+If you want to use anyenv or Xenv in playbook after this role is assigned, you may need to reload `anyenv_profile` as follows.
+
+In this example, `anyenv_profile` is reloaded because /bin/sh is used as login shell.
+
+```yaml
+- name: Install ruby 2.1.2
+  shell: /bin/sh -lc "rbenv install 2.1.2 && rbenv rehash && rbenv global 2.1.2"
+```
+
 License
 -------
 
