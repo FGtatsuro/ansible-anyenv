@@ -57,6 +57,8 @@ Local requirements are as follows.
 Notes
 -----
 
+- anyenv depends on Bash. Thus this role can't be used on the environment Bash isn't installed(ex. Container of Alpine Linux).
+
 - This role just installs anyenv, doesn't install any Xenv(ex. pyenv, rbenv) automatically. If you want to use them, please install them manually.
 
   ```bash
