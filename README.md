@@ -57,14 +57,19 @@ Local requirements are as follows.
 Notes
 -----
 
-If you want to use anyenv or Xenv in playbook after this role is assigned, you may need to reload `anyenv_profile` as follows.
+- This role just installs anyenv, doesn't install any Xenv(ex. pyenv, rbenv) automatically. If you want to use them, please install them manually.
 
-In this example, `anyenv_profile` is reloaded because /bin/sh is used as login shell.
+  ```bash
+  $ anyenv install rbenv
+  ```
 
-```yaml
-- name: Install ruby 2.1.2
-  shell: /bin/sh -lc "rbenv install 2.1.2 && rbenv rehash && rbenv global 2.1.2"
-```
+- If you want to use anyenv or Xenv in playbook after this role is assigned, you may need to reload `anyenv_profile` as follows.
+  In this example, `anyenv_profile` is reloaded because /bin/sh is used as login shell.
+
+  ```yaml
+  - name: Install ruby 2.1.2
+    shell: /bin/sh -lc "rbenv install 2.1.2 && rbenv rehash && rbenv global 2.1.2"
+  ```
 
 License
 -------
