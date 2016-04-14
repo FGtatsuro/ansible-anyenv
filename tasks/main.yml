@@ -1,4 +1,31 @@
 ---
 # tasks file for anyenv
-- name: Run specified tasks on current platform 
+- name: Run specified tasks on current platform
   include: "{{ ansible_os_family }}.yml"
+- name: Check whether anyenv is installed
+  stat: path="{{ anyenv_home }}/.anyenv"
+  register: st_anyenv
+  changed_when: no
+- block:
+  - name: Clone anyenv
+    git: repo="https://github.com/riywo/anyenv" dest="{{ anyenv_home }}/.anyenv"
+    become: yes
+  - name: Set owner/group for anyenv
+    file: >
+      path="{{ anyenv_home }}/.anyenv"
+      owner="{{ anyenv_owner }}"
+      group="{{ anyenv_group }}"
+      recurse=yes
+    become: yes
+  - name: Add profile settings for anyenv
+    lineinfile: >
+      dest="{{ anyenv_home }}/{{ anyenv_profile }}"
+      line="{{ item }}"
+      owner="{{ anyenv_owner }}"
+      group="{{ anyenv_group }}"
+      create=yes
+    with_items:
+      - "export PATH=\"$HOME/.anyenv/bin:$PATH\""
+      - "eval \"$(anyenv init -)\""
+    become: yes
+  when: not st_anyenv.stat.exists

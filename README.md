@@ -20,12 +20,20 @@ Role Variables
 
 The variables we can use in this role.
 
+|name|description|default|
+|---|---|---|
+|anyenv_home|The directory anyenv(`.anyenv` directory) is put.|/root|
+|anyenv_owner|User who uses anyenv. `anyenv_home` should also be home directory of this user.|root(This value is only valid on Linux. For OSX, please use `wheel` as same means.)|
+|anyenv_group|Group who uses anyenv. `.anyenv` directory is owned by this group.|wheel|
+|anyenv_profile|Profile including anyenv settings. This value is depended on shell `anyenv_owner` uses.|.profile|
+
 Role Dependencies
 -----------------
 
 The dependencies on other roles for this role.
 
 - FGtatsuro.python-requirements
+- FGtatsuro.git
 
 Example Playbook
 ----------------
@@ -45,6 +53,25 @@ Local requirements are as follows.
 
 - Ansible (>= 2.0.0)
 - Docker (>= 1.10.1)
+
+Notes
+-----
+
+- anyenv depends on Bash. Thus this role can't be used on the environment Bash isn't installed(ex. Container of Alpine Linux).
+
+- This role just installs anyenv, doesn't install any Xenv(ex. pyenv, rbenv) automatically. If you want to use them, please install them manually.
+
+  ```bash
+  $ anyenv install rbenv
+  ```
+
+- If you want to use anyenv or Xenv in playbook after this role is assigned, you may need to reload `anyenv_profile` as follows.
+  In this example, `anyenv_profile` is reloaded because /bin/sh is used as login shell.
+
+  ```yaml
+  - name: Install ruby 2.1.2
+    shell: /bin/bash -lc "rbenv install 2.1.2 && rbenv rehash && rbenv global 2.1.2"
+  ```
 
 License
 -------

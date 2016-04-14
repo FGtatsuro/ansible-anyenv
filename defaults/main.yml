@@ -1,2 +1,6 @@
 ---
 # defaults file for anyenv
+anyenv_home: "/root"
+anyenv_owner: "root"
+anyenv_group: "root"
+anyenv_profile: ".profile"
