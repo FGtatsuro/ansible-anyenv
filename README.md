@@ -70,7 +70,7 @@ Notes
 
   ```yaml
   - name: Install ruby 2.1.2
-    shell: /bin/sh -lc "rbenv install 2.1.2 && rbenv rehash && rbenv global 2.1.2"
+    shell: /bin/bash -lc "rbenv install 2.1.2 && rbenv rehash && rbenv global 2.1.2"
   ```
 
 License
