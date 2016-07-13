@@ -23,8 +23,8 @@ The variables we can use in this role.
 |name|description|default|
 |---|---|---|
 |anyenv_home|The directory anyenv(`.anyenv` directory) is put.|/root|
-|anyenv_owner|User who uses anyenv. `anyenv_home` should also be home directory of this user.|root(This value is only valid on Linux. For OSX, please use `wheel` as same means.)|
-|anyenv_group|Group who uses anyenv. `.anyenv` directory is owned by this group.|wheel|
+|anyenv_owner|User who uses anyenv. `anyenv_home` should also be home directory of this user.|root|
+|anyenv_group|Group who uses anyenv. `.anyenv` directory is owned by this group.|root(This value is only valid on Linux. For OSX, please use `wheel` or `admin` as same means.)|
 |anyenv_profile|Profile including anyenv settings. This value is depended on shell `anyenv_owner` uses.|.profile|
 
 Role Dependencies
