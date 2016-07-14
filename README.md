@@ -25,7 +25,7 @@ The variables we can use in this role.
 |anyenv_home|The directory anyenv(`.anyenv` directory) is put.|/root|
 |anyenv_owner|User who uses anyenv. `anyenv_home` should also be home directory of this user.|root|
 |anyenv_group|Group who uses anyenv. `.anyenv` directory is owned by this group.|root(This value is only valid on Linux. For OSX, please use `wheel` or `admin` as same means.)|
-|anyenv_profile|Profile including anyenv settings. This value is depended on shell `anyenv_owner` uses.|.profile|
+|anyenv_profile|Profile including anyenv settings. This profile is put under `anyenv_home`.|.profile|
 
 Role Dependencies
 -----------------
