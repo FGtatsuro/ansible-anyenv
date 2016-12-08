@@ -1,10 +1,10 @@
 require "spec_helper_#{ENV['SPEC_TARGET_BACKEND']}"
 
-describe command('exec /bin/bash -l && anyenv install ndenv'), :if => ['debian', 'alpine'].include?(os[:family]) do
+describe command("su -l -s /bin/bash -c 'anyenv install ndenv'"), :if => ['debian', 'alpine'].include?(os[:family]) do
   its(:exit_status) { should eq 0 }
 end
 
-describe command('exec /bin/bash -l && which ndenv'), :if => ['debian', 'alpine'].include?(os[:family]) do
+describe command("su -l -s /bin/bash -c 'which ndenv'"), :if => ['debian', 'alpine'].include?(os[:family]) do
   its(:exit_status) { should eq 0 }
 end
 
