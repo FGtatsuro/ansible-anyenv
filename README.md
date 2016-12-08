@@ -11,7 +11,6 @@ Requirements
 The dependencies on other softwares/librarys for this role.
 
 - Debian
-- Alpine Linux
 - OSX
   - Homebrew (>= 0.9.5)
 
@@ -56,8 +55,6 @@ Local requirements are as follows.
 
 Notes
 -----
-
-- anyenv depends on Bash. Thus this role can't be used on the environment Bash isn't installed(ex. Container of Alpine Linux).
 
 - This role just installs anyenv, doesn't install any Xenv(ex. pyenv, rbenv) automatically. If you want to use them, please install them manually.
 
