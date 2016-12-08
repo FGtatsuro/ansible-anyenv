@@ -66,7 +66,7 @@ Notes
   ```
 
 - If you want to use anyenv or Xenv in playbook after this role is assigned, you may need to reload `anyenv_profile` as follows.
-  In this example, `anyenv_profile` is reloaded because /bin/sh is used as login shell.
+  In this example, `anyenv_profile` is reloaded because /bin/bash is used as login shell.
 
   ```yaml
   - name: Install ruby 2.1.2
